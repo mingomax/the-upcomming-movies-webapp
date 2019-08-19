@@ -4,6 +4,7 @@ import express from 'express';
 import helmet from 'helmet';
 
 import config from './config/config';
+import MoviesManager  from 'managers/movies.manager';
 
 class Application {
   public app: express.Application;
@@ -45,6 +46,9 @@ class Application {
     this.app.route('/').get((req, res) => {
       res.send({ version: config.version });
     });
+
+    this.app.route('/movies').get(MoviesManager.listMovies);
+  }
 }
 
 export default (new Application()).app;
