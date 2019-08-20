@@ -1,3 +1,14 @@
-<div class="full-width-table">
-  <p>Não há dados para exibir</p>
-</div>
+<section class="movies flex">
+    <ng-template #noRecords>
+      <mat-card class="no-data">Não há dados para exibir</mat-card>
+    </ng-template>
+    <div class="movie-search-box">
+      <app-movie-search></app-movie-search>
+    </div>
+    <div class="movies-list" *ngIf="!isLoading || hasRecords; else noRecords">
+        <app-card-movie [movie]="item" *ngFor="let item of records"></app-card-movie>
+    </div>
+</section>
+
+
+
