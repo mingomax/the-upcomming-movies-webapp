@@ -1,0 +1,86 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$app-pallete: (
+    50 : #f0f8ec,
+    100 : #dbeecf,
+    200 : #c3e3af,
+    300 : #aad78e,
+    400 : #98cf76,
+    500 : #86c65e, // Primary default
+    600 : #7ec056,
+    700 : #73b94c,
+    800 : #69b142,
+    900 : #56a431,
+    A100 : #f1ffeb,
+    A200 : #ceffb8,
+    A400 : #aaff85,
+    A700 : #98ff6c,
+    contrast: (
+      50: $black-87-opacity,
+      100: $black-87-opacity,
+      200: $black-87-opacity,
+      300: $black-87-opacity,
+      400: $black-87-opacity,
+      500: $white-87-opacity,
+      600: $white-87-opacity,
+      700: $white-87-opacity,
+      800: $white-87-opacity,
+      900: $white-87-opacity,
+      A100: $black-87-opacity,
+      A200: $black-87-opacity,
+      A400: $black-87-opacity,
+      A700: $black-87-opacity,
+    )
+);
+
+$app-dark-pallete: (
+    50 : #e8edeb,
+    100 : #c5d3cc,
+    200 : #9fb6aa,
+    300 : #799988,
+    400 : #5c836f,
+    500 : #3f6d55, // Primary Default
+    600 : #39654e,
+    700 : #315a44,
+    800 : #29503b,
+    900 : #1b3e2a,
+    A100 : #80ffb5,
+    A200 : #4dff98,
+    A400 : #1aff7a,
+    A700 : #01ff6b,
+    contrast: (
+      50: $black-87-opacity,
+      100: $black-87-opacity,
+      200: $black-87-opacity,
+      300: $black-87-opacity,
+      400: $black-87-opacity,
+      500: $white-87-opacity,
+      600: $white-87-opacity,
+      700: $white-87-opacity,
+      800: $white-87-opacity,
+      900: $white-87-opacity,
+      A100: $black-87-opacity,
+      A200: $black-87-opacity,
+      A400: $black-87-opacity,
+      A700: $black-87-opacity,
+    )
+);
+
+$primary: mat-palette($app-pallete, 500);
+$accent:  mat-palette($app-pallete, 400, 900, A100);
+$warn:    mat-palette($mat-red);
+
+$config: mat-typography-config();
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+.alternate-theme {
+  $alternate-primary: mat-palette($mat-light-green);
+  $alternate-accent:  mat-palette($mat-light-green, 600, 400, 700);
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+  @include angular-material-theme($alternate-theme);
+}
