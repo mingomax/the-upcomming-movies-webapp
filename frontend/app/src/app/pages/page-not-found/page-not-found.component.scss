@@ -1,0 +1,19 @@
+@import "~src/assets/scss/theming";
+
+.page-not-found.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.page-not-found {
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.page-not-found > * {
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+@import "~src/assets/scss/theming";
+
+.mat-toolbar {
+  margin: 0;
+  padding: 10px;
+  color: mat-color($primary, 500);
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+  font-size: x-large;
+  img {
+    max-width: 160px;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+  button {
+    margin-left: 5px;
+  }
+}
