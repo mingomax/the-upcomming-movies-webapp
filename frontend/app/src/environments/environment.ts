@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  title: 'UP Movies'
+  title: 'UP Movies',
+  api: {
+    uri: 'http://localhost:3000',
+  }
 };
 
 /*
