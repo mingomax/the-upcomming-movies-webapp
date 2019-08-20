@@ -1,21 +1,23 @@
-mat-icon {
-  vertical-align: middle;
-  font-size: 24px;
-  line-height: 20px;
+@import "~src/assets/scss/theming";
+
+.movies.flex {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
 
-.full-width-table {
+.movies {
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.movies > * {
   width: 100%;
-  .mat-header {
-    text-align: center;
-  }
-  .actions {
-   display: flex;
-   justify-content: end;
-   margin: 1.5em;
-    button {
-      font-size: 1.5em;
-      color: #FFF;
-    }
-  }
+}
+
+.movies-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
