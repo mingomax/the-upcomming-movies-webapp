@@ -7,7 +7,7 @@ services:
       target: ${DOCKER_TARGET}
       args:
         - APPLICATION_ENV=${APPLICATION_ENV}
-    container_name: upm-movies-api
+    container_name: up-movies-api
     env_file:
       - .env
     environment:
@@ -17,3 +17,23 @@ services:
       - 9229:9229
     volumes:
       - ./backend:/srv/backend
+
+  frontend:
+    build:
+      context: ./frontend/app
+      target: ${DOCKER_TARGET}
+      args:
+        - APPLICATION_ENV=${APPLICATION_ENV}
+    container_name: up-movies-app
+    # command: sh -c "npm install && npm start" # sh -c "while true; do echo hello; sleep 2; done"
+    env_file:
+      - .env
+    environment:
+      - APPLICATION_ENV=${APPLICATION_ENV}
+    ports:
+      - 4200:4200
+      - 80:80
+    volumes:
+      - ./frontend/app:/srv/app
+      - ./.env:/srv/app/.env
+
