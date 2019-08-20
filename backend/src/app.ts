@@ -4,7 +4,7 @@ import express from 'express';
 import helmet from 'helmet';
 
 import config from './config/config';
-import MoviesManager  from 'managers/movies.manager';
+import moviesManager  from './managers/movies.manager';
 
 class Application {
   public app: express.Application;
@@ -47,7 +47,7 @@ class Application {
       res.send({ version: config.version });
     });
 
-    this.app.route('/movies').get(MoviesManager.listMovies);
+    this.app.route('/movies').get(moviesManager.listMovies);
   }
 }
 
