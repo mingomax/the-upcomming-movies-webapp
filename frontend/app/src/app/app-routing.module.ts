@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { environment } from '@env/environment';
 
 const mainRoutes: Routes = [
+  { path: '', redirectTo: '/movies', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found-page', pathMatch: 'full' }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(

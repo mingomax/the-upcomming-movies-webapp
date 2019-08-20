@@ -4,15 +4,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UiModule } from './ui/ui.module';
+import { PagesModule } from './pages/pages.module';
+import { MoviesModule } from './movies/movies.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserModule.withServerTransition({ appId: 'serverApp'}),
+    BrowserAnimationsModule,
+    UiModule,
+    PagesModule,
+    MoviesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

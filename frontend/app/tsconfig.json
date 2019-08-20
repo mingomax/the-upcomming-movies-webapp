@@ -5,6 +5,7 @@
     "outDir": "./dist/out-tsc",
     "paths": {
       "@helpers/*": ["src/app/helpers/*"],
+      "@app/*": ["src/app/*"],
       "@env/*": ["src/environments/*"]
     },
     "sourceMap": true,
