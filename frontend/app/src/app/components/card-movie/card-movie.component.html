@@ -1,0 +1,17 @@
+<mat-card class="movie-card">
+    <mat-card-header>
+      <div mat-card-avatar [style.background-image]="cardHeaderImage" class="movie-header-image"></div>
+      <mat-card-title>{{ movie.title }}</mat-card-title>
+      <mat-card-subtitle>{{ movie.original_title }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ backdropImagePath }}" alt="{{ movie.title }}">
+    <mat-card-content>
+      <p>
+        {{ movie.overview}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
