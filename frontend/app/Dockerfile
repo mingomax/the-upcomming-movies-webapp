@@ -36,7 +36,7 @@ RUN set -xe; \
     /usr/src/* \
     /var/cache/apk/* && \
     npm i npm@latest -g && \
-    npm install -g @angular/cli && npm cache clean --force
+    npm install -g @angular/cli@8.2.0 && npm cache clean --force
 
 # Copies the local package.json file to the container
 # and utilities docker container cache to not needing to rebuild
@@ -62,8 +62,12 @@ RUN set -xe; \
 
 EXPOSE 4200 80
 
-# Set tini as entrypoint
-# ENTRYPOINT ["/sbin/tini", "--"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh; \
+    ls -la dist;
+
+ENTRYPOINT ["/entrypoint.sh"]
+
 
 CMD [ "npm", "start" ]
 
@@ -72,7 +76,7 @@ FROM nginx:alpine as release
 RUN apk update && apk upgrade
 
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build-env /srv/app/dist/frontend /usr/share/nginx/html
+COPY --from=dev-builder /srv/app/dist/app /usr/share/nginx/html
 
 EXPOSE 80 443
 
