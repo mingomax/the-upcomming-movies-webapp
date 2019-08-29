@@ -7,6 +7,7 @@ export const environment = {
   title: 'UP Movies',
   api: {
     uri: 'http://localhost:3000',
+    image_uri: 'https://image.tmdb.org/t/p',
   }
 };
 
