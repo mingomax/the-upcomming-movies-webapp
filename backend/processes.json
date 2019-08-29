@@ -1,0 +1,9 @@
+{
+  "apps": [{
+    "merge_logs"  : true,
+    "name"        : "UP Movies API",
+    "out_file"    : "/var/log/kaasa_api.log",
+    "log_date_format" : "MM/DD/YYYY HH:mm:ss",
+    "script"      : "src/server.js"
+  }]
+}

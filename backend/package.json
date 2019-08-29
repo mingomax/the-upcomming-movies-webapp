@@ -2,7 +2,7 @@
   "name": "@archtouch/test-fullstack",
   "version": "1.0.0",
   "description": "Upcoming Movies API for Full stach software developer test on Archtouch",
-  "main": "dist/server.js",
+  "main": "src/server.js",
   "scripts": {
     "ts-node-dev": "node ./bin/ts-node-dev",
     "tsc": "./node_modules/.bin/tsc",
@@ -10,7 +10,7 @@
     "dev": "NODE_ENV=test nodemon --inspect=0.0.0.0:9229 --nolazy src/server.ts",
     "clean": "rm -rf ./dist/* ",
     "build": "tsc",
-    "start": "node ./dist/index.js"
+    "start": "export NODE_ENV=${APPLICATION_ENV} && pm2 start --no-daemon processes.json"
   },
   "author": "Domingos Teruel <mingomax@dteruel.net.br> (https://www.dteruel.net.br)",
   "license": "MIT",

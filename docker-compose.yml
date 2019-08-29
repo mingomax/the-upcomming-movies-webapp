@@ -25,7 +25,7 @@ services:
       args:
         - APPLICATION_ENV=${APPLICATION_ENV}
     container_name: up-movies-app
-    # command: sh -c "npm install && npm start" # sh -c "while true; do echo hello; sleep 2; done"
+    command: sh -c "npm install && npm start" # command: sh -c "while true; do echo hello; sleep 2; done"
     env_file:
       - .env
     environment:

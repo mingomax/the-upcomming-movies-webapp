@@ -56,6 +56,11 @@ RUN set -xe; \
     npm run build; \
   fi;
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
 EXPOSE 3000 9229
 
 CMD ["npm", "run", "dev"]
@@ -69,10 +74,12 @@ ENV NODE_ENV=${APPLICATION_ENV}
 # Create a directory where our app will be placed
 WORKDIR /srv/api
 
-COPY --from=dev-builder /srv/backend/dist /srv/api/dist/
+COPY --from=dev-builder /srv/backend/dist /srv/api/
 COPY --from=dev-builder /srv/backend/package* /srv/api/
-
+COPY --from=dev-builder /srv/backend/process* /srv/api/
 RUN  set -xe; \
-    npm install --production;
+    npm install pm2 -g; \
+    npm install --production --no-optional --progress=false --quiet; \
+    ls -l;
 
 CMD ["npm", "start"]
