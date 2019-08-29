@@ -1,0 +1,23 @@
+<div class="card">
+  <figure>
+    <img [src]="movie.posterPath" alt="movie.title">
+  </figure>
+  <article>
+    <h1>{{ movie.title }}</h1>
+    <h5>{{ movie.releaseDate | date: 'mediumDate'}}</h5>
+    <mat-chip-list>
+      <mat-chip *ngFor="let item of movie.genres" color="accent">{{item.name}}</mat-chip>
+    </mat-chip-list>
+    <p>{{ movie.tagline }}</p>
+    <p>{{movie.overview}}</p>
+    <ul class="movie-studio" *ngFor="let prod of movie.productionCompanies" >
+      <li>
+        <img *ngIf="prod.hasLogo"  [src]="prod.logoPath">
+      </li>
+    </ul>
+    <div class="actions">
+      <a *ngIf="showReadMore" mat-stroked-button color="accent" [routerLink]="['/movie', movie.id]">Read more</a>
+      <a *ngIf="!showReadMore" mat-raised-button color="accent" [routerLink]="['/movies']">Back</a>
+    </div>
+  </article>
+</div>
