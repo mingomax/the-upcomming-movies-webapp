@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiModule } from './ui/ui.module';
-import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { MoviesModule } from './movies/movies.module';
 
@@ -19,7 +18,6 @@ import { MoviesModule } from './movies/movies.module';
     BrowserAnimationsModule,
     HttpClientModule,
     UiModule,
-    ComponentsModule,
     PagesModule,
     MoviesModule,
     AppRoutingModule

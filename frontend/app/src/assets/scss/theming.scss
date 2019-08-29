@@ -69,7 +69,7 @@ $app-dark-pallete: (
 );
 
 $primary: mat-palette($app-pallete, 500);
-$accent:  mat-palette($app-pallete, 400, 900, A100);
+$accent:  mat-palette($app-dark-pallete, 400, 900, A100);
 $warn:    mat-palette($mat-red);
 
 $config: mat-typography-config();

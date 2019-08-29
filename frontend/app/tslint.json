@@ -12,13 +12,15 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "movie",
+      "movies",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "movie",
+      "movies",
       "kebab-case"
     ],
     "import-blacklist": [
