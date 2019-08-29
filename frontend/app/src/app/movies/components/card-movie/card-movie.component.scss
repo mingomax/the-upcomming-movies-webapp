@@ -1,0 +1,38 @@
+@import "~src/assets/scss/theming";
+
+:host {
+  margin-left: 10px;
+  .card {
+    display: flex;
+    flex-direction: row;
+    min-height: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    top: 0;
+    transition: all .1s ease-in;
+    &:hover {
+      top: -2px;
+      box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    p {
+      line-height: 1.4;
+    }
+
+    .movie-studio {
+      list-style: none;
+      display: inline-block;
+    }
+
+    .actions {
+      text-align: right;
+      padding: 10px auto;
+      margin-right: 10px;
+    }
+  }
+}

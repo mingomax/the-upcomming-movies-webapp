@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "707bbec3-163f-4220-953c-b944bfb57d5c",
+		"name": "The upcoming movies API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a888935-481b-4d3a-a0e7-40304fa2b97b",
+						"exec": [
+							"pm.test(\"API esta online\", function() {",
+							"    pm.expect(pm.response.text()).to.include('version');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api.host}}",
+					"host": [
+						"{{api.host}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api.host}}/movies?lang=pt-BR&page=1",
+					"host": [
+						"{{api.host}}"
+					],
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "pt-BR"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Movies Genres",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api.host}}/movies/genres",
+					"host": [
+						"{{api.host}}"
+					],
+					"path": [
+						"movies",
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api.host}}/movies/384018",
+					"host": [
+						"{{api.host}}"
+					],
+					"path": [
+						"movies",
+						"384018"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

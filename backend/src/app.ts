@@ -11,28 +11,13 @@ class Application {
 
   constructor() {
     this.app = express();
-    this.enableCors();
     this.middleware();
+    this.enableCors();
     this.routes();
   }
 
   enableCors(): void {
-    const options: cors.CorsOptions = {
-      credentials: false,
-      exposedHeaders: [
-        'Authorization',
-        'Content-Type',
-        'Origin',
-        'Accept',
-        'X-Requested-With',
-        'Cache-Control',
-        'responseType',
-        'X-File-Name',
-      ],
-      origin: '*',
-      preflightContinue: false,
-    };
-    this.app.use(cors(options));
+    this.app.use(cors(config.server.cors));
   }
 
   middleware(): void {
@@ -48,7 +33,11 @@ class Application {
     });
 
     this.app.route('/movies').get(moviesManager.listMovies);
+    this.app.route('/movies/:id').get(moviesManager.movieById);
+    this.app.route('/movies/genres').get(moviesManager.listGenres);
+    // enable pre-flight
+    this.app.options('*', cors(config.server.cors));
   }
 }
 
-export default (new Application()).app;
+export default (new Application ()).app;

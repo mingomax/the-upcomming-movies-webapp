@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { PageEvent } from '@angular/material';
 
-import { MoviesService } from '../movies.service';
-import { Movie } from '../movie.model';
+import { MoviesService, MoviesItem } from '../movies.service';
+import { Movie } from '@app/movies/movie.model';
 
 @Component({
-  selector: 'app-movies-list',
+  selector: 'movies-list',
   templateUrl: './movies-list.component.html',
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  records: Array<Movie> = [];
+  records$: Observable<Movie[]>;
   totalRecords = 0;
-  isLoading = false;
+  pageIndex = 1;
+  pageSize = 20;
 
   constructor(private service: MoviesService) { }
 
@@ -19,21 +23,19 @@ export class MoviesListComponent implements OnInit {
     this.loadData();
   }
 
-  get hasRecords(): boolean {
-    return this.totalRecords > 0;
+  paginate(pageEvent: PageEvent): void {
+    this.pageIndex = pageEvent.pageIndex + 1;
+    this.pageSize = pageEvent.pageSize;
+    this.loadData();
   }
 
-  private loadData(): void {
-    this.isLoading = true;
-    this.service
-      .listMovies('', 1)
-      .subscribe(
-        (response) => {
-          this.records = response.data;
-          this.totalRecords = response.total;
-        },
-        () => {},
-        () => this.isLoading = false
+  loadData(): void {
+    this.records$ = this.service.listMovies('', this.pageIndex)
+      .pipe(
+        tap(console.log),
+        tap((res: MoviesItem) => this.totalRecords = res.total),
+        map((res: MoviesItem) => res.items)
       );
   }
+
 }

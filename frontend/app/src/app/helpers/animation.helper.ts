@@ -1,6 +1,11 @@
 import {
-  trigger, animateChild, group,
-  transition, animate, style, query
+  trigger,
+  animateChild,
+  group,
+  transition,
+  animate,
+  style,
+  query
 } from '@angular/animations';
 
 // Routable animations

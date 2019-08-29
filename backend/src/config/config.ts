@@ -6,6 +6,22 @@ export default {
   env: process.env.APPLICATION_ENV || 'development',
   server: {
     port: process.env.API_PORT || 3000,
+    cors :{
+      credentials: false,
+      exposedHeaders: [
+        'Authorization',
+        'Content-Type',
+        'Origin',
+        'Accept',
+        'X-Requested-With',
+        'Cache-Control',
+        'responseType',
+        'X-File-Name',
+      ],
+      methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+      origin: '*',
+      optionsSuccessStatus: 200,
+    },
   },
   tmdb: {
     uri: 'https://api.themoviedb.org/3',
